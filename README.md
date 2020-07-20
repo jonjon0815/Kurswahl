@@ -5,7 +5,7 @@ check the "Kurswahl" for the "Oberstufe" in german high school.
 
 
 ## Usage
-This github repo is just source code. Use [Kurswahl-bw.de](https://kurswahl-bw.de/) to access.
+This github repo is just source code. Use [Kurswahl-bw.de](http://kurswahl-bw.de/) to access.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
