@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <title>Kursrechner</title>
+    <link href="stylesheet.css" rel="stylesheet" />
+    <script src="JavaScript2.js"></script>
+    <link rel="icon" type="image/vnd.microsoft.icon" href="favicon.ico">
+</head>
+<body>
+    <script>
+        function cookies() {
+            window.location = '3std.html';
+            Schreiben("cookies", "true");
+        }
+        function check_cookies() {
+            if (Lesen("cookies") == "true") {
+                window.location = '3std.html';
+            }
+        }
+    </script>
+    <h1>
+        Kekse?
+    </h1>
+    <div class="border"></div>
+    <br />
+    <p class="imp">Für eine entspannteres Bedienungsgefühl verwenden wir Cookies.</p>
+    <p class="imp">Ohne Cookies ist eine Verwendung leider nicht möglich.</p>
+    <p>
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+    </p>
+    <br />
+    <script>check_cookies();</script>
+    <button class="btn" onclick="cookies();">Alle akzeptieren</button>
+    <button class="btn" onclick="cookies();">Nur funktionelle Cookies</button>
+
+
+
+</body>
+</html>

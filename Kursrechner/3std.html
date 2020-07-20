@@ -1,0 +1,961 @@
+﻿
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="JavaScript2.js"></script>
+    <script src="anrechnen_ersatzkurs.js"></script>
+    <link rel="icon" type="image/vnd.microsoft.icon" href="favicon.ico">
+    <meta charset="utf-8" />
+
+    <link href="stylesheet.css" rel="stylesheet" />
+    <link href="mask.css" rel="stylesheet" />
+    <title>Kursechner</title>
+</head>
+
+<body>
+    <div id="myNav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav(); load();">&times;</a>
+
+        <div class="overlay-content">
+            <h1>Kurswahl gefunden!</h1>
+            <h2>Wir haben eine Kurswahl vom
+            <script>document.write(Lesen("date"));</script> gefunden willst Du sie laden?</h2>
+            <button class="btn" onclick="load();">Laden</button>
+            <button class="btn" onclick="reset();" id="button_print">Neu anfangen</button>
+        </div>
+
+
+    </div>
+    <h1>
+        Kurswahl
+    </h1>
+    <div class="border"></div>
+
+    <center>
+
+        <table id="all">
+            <tr>
+                <td>
+                    <p class="title">Bereich I</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="head">
+                    Kurs
+                </td>
+                <td class="head">
+                    Leistungsfach
+                </td>
+                <td class="head">
+                    Grundkurs
+                </td>
+                <td class="head" id="mabi" style="display: none;">
+                    Mündliches Abitur
+                </td>
+                <td class="head">
+                </td>
+
+            </tr>
+
+            <tr>
+                <td>
+                    <p id="de0">Deutsch</p>
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="de1" onchange="change(this);">
+                        <span class="checkmark" id="de8"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="de2" onchange="change(this);">
+                        <span class="checkmark" id="de9"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="de4" onchange="change(this);">
+                        <span class="checkmark" id="de7"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <p id="de"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <p id="en0">Englisch</p>
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="en1" onchange="change(this);">
+                        <span class="checkmark" id="en8"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="en2" onchange="change(this);">
+                        <span class="checkmark" id="en9"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="en4" onchange="change(this);">
+                        <span class="checkmark" id="en7"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <p id="en"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <p id="fr0">Französisch</p>
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="fr1" onchange="change(this);">
+                        <span class="checkmark" id="fr8"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="fr2" onchange="change(this);">
+                        <span class="checkmark" id="fr9"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="fr4" onchange="change(this);">
+                        <span class="checkmark" id="fr7"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <p id="fr"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <p id="la0">Latein</p>
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="la1" onchange="change(this);">
+                        <span class="checkmark" id="la8"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="la2" onchange="change(this);">
+                        <span class="checkmark" id="la9"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="la4" onchange="change(this);">
+                        <span class="checkmark" id="la7"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <p id="la"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <p id="it0">Italienisch</p>
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="it1" onchange="change(this);">
+                        <span class="checkmark" id="it8"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="it2" onchange="change(this);">
+                        <span class="checkmark" id="it9"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="it4" onchange="change(this);">
+                        <span class="checkmark" id="it7"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <p id="it"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <p id="bk0">Bildende Kunst</p>
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="bk1" onchange="change(this);">
+                        <span class="checkmark" id="bk8"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="bk2" onchange="change(this);">
+                        <span class="checkmark" id="bk9"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="bk4" onchange="change(this);">
+                        <span class="checkmark" id="bk7"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <p id="bk"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <p id="mu0">Musik</p>
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="mu1" onchange="change(this);">
+                        <span class="checkmark" id="mu8"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="mu2" onchange="change(this);">
+                        <span class="checkmark" id="mu9"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="mu4" onchange="change(this);">
+                        <span class="checkmark" id="mu7"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <p id="mu"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <p id="lt0">Literatur und Theater</p>
+                </td>
+                <td>
+                    <p>----</p>
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="lt2" onchange="change(this);">
+                        <span class="checkmark" id="lt9"></span>
+                    </label>
+
+
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="lt4" onchange="change(this);">
+                        <span class="checkmark" id="lt7"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <p id="lt"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <p id="li0">Literatur</p>
+                </td>
+                <td>
+                    <p>----</p>
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="li2" onchange="change(this);">
+                        <span class="checkmark" id="li9"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="li4" onchange="change(this);">
+                        <span class="checkmark" id="li7"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <p id="li"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <p class="title">Bereich II</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p id="gs0">Geschichte</p>
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="gs1" onchange="change(this);">
+                        <span class="checkmark" id="gs8"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="gs2" onchange="change(this);">
+                        <span class="checkmark" id="gs9"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="gs4" onchange="change(this);">
+                        <span class="checkmark" id="gs7"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <p id="gs"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <p id="gg0">Geographie</p>
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="gg1" onchange="change(this);">
+                        <span class="checkmark" id="gg8"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <p>----</p>
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="gg4" onchange="change(this);">
+                        <span class="checkmark" id="gg7"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <p id="gg"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <p id="gm0">Gemeinschaftskunde</p>
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="gm1" onchange="change(this);">
+                        <span class="checkmark" id="gm8"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <p>----</p>
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="gm4" onchange="change(this);">
+                        <span class="checkmark" id="gm7"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <p id="gm"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <p id="spez">Gm/GG</p>
+                    <p id="mg0"></p>
+                </td>
+                <td>
+                    <p>----</p>
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="mg3" onchange="change(this);">
+                        <span class="checkmark" id="mg9"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="mg4" onchange="change(this);">
+                        <span class="checkmark" id="mg7"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <p id="mg"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <p id="re0">Religion</p>
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="re1" onchange="change(this);">
+                        <span class="checkmark" id="re8"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="re2" onchange="change(this);">
+                        <span class="checkmark" id="re9"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="re4" onchange="change(this);">
+                        <span class="checkmark" id="re7"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <p id="re"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <p id="et0">Ethik</p>
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="et1" onchange="change(this);">
+                        <span class="checkmark" id="et8"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="et2" onchange="change(this);">
+                        <span class="checkmark" id="et9"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="et4" onchange="change(this);">
+                        <span class="checkmark" id="et7"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <p id="et"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <p id="wi0">Wirtschaft</p>
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="wi1" onchange="change(this);">
+                        <span class="checkmark" id="wi8"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <p>----</p>
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="wi4" onchange="change(this);">
+                        <span class="checkmark" id="wi7"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <p id="wi"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <p id="pi0">Philosophie</p>
+                </td>
+                <td>
+                    <p>----</p>
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="pi2" onchange="change(this);">
+                        <span class="checkmark" id="pi9"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="pi4" onchange="change(this);">
+                        <span class="checkmark" id="pi7"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <p id="pi"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <p id="ps0">Psychologie</p>
+                </td>
+                <td>
+                    <p>----</p>
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="ps2" onchange="change(this);">
+                        <span class="checkmark" id="ps9"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="ps4" onchange="change(this);">
+                        <span class="checkmark" id="ps7"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <p id="ps"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <p id="sm0">Seminarfach</p>
+                </td>
+                <td>
+                    <p>----</p>
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="sm2" onchange="change(this);">
+                        <span class="checkmark" id="sm9"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="sm4" onchange="change(this);">
+                        <span class="checkmark" id="sm7"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <p id="sm"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <p class="title">Bereich III</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p id="ma0">Mathe</p>
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="ma1" onchange="change(this);">
+                        <span class="checkmark" id="ma8"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="ma2" onchange="change(this);">
+                        <span class="checkmark" id="ma9"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="ma4" onchange="change(this);">
+                        <span class="checkmark" id="ma7"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <p id="ma"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <p id="nw0">NwT**</p>
+                </td>
+                <td>
+                    <p>----</p>
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="nw2" onchange="change(this);">
+                        <span class="checkmark" id="nw9"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="nw4" onchange="change(this);">
+                        <span class="checkmark" id="nw7"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <p id="nw"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <p id="bi0">Biologie</p>
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="bi1" onchange="change(this);">
+                        <span class="checkmark" id="bi8"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="bi2" onchange="change(this);">
+                        <span class="checkmark" id="bi9"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="bi4" onchange="change(this);">
+                        <span class="checkmark" id="bi7"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <p id="bi"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <p id="ch0">Chemie</p>
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="ch1" onchange="change(this);">
+                        <span class="checkmark" id="ch8"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="ch2" onchange="change(this);">
+                        <span class="checkmark" id="ch9"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="ch4" onchange="change(this);">
+                        <span class="checkmark" id="ch7"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <p id="ch"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <p id="ph0">Physik</p>
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="ph1" onchange="change(this);">
+                        <span class="checkmark" id="ph8"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="ph2" onchange="change(this);">
+                        <span class="checkmark" id="ph9"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="ph4" onchange="change(this);">
+                        <span class="checkmark" id="ph7"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <p id="ph"></p>
+                </td>
+
+            </tr>
+            <tr>
+            <tr>
+                <td>
+                    <p id="vk0">VK Mathe</p>
+                </td>
+                <td>
+                    <p>----</p>
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="vk2" onchange="change(this);">
+                        <span class="checkmark" id="vk9"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="vk4" onchange="change(this);">
+                        <span class="checkmark" id="vk7"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <p id="vk"></p>
+                </td>
+
+            </tr>
+            <tr>
+            <tr>
+                <td>
+                    <p id="in0">Inf</p>
+                </td>
+                <td>
+                    <p>----</p>
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="in2" onchange="change(this);">
+                        <span class="checkmark" id="in9"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="in4" onchange="change(this);">
+                        <span class="checkmark" id="in7"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <p id="in"></p>
+                </td>
+
+            </tr>
+            <tr>
+            <tr>
+                <td>
+                    <p id="ge0">Geometrie</p>
+                </td>
+                <td>
+                    <p>----</p>
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="ge2" onchange="change(this);">
+                        <span class="checkmark" id="ge9"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="ge4" onchange="change(this);">
+                        <span class="checkmark" id="ge7"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <p id="ge"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <p class="title">Ohne Zuordung</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p id="sp0">Sport</p>
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="sp1" onchange="change(this);">
+                        <span class="checkmark" id="sp8"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="sp2" onchange="change(this);">
+                        <span class="checkmark" id="sp9"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" id="sp4" onchange="change(this);">
+                        <span class="checkmark" id="sp7"></span>
+                    </label>
+
+                </td>
+                <td>
+                    <p id="sp"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <p></p>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <p id="gesa" style="width:100px;">0|0|0|0</p>
+                </td>
+            </tr>
+        </table>
+    </center>
+    <p>* Geographie und Gemeinschaftskunde können bei Wahl eines dieser Fächer 5-stündig vermindert werden.</p>
+    <p>** NwT gilt nur als Nws, wenn eine andere Nws 5-stündig gewählt ist.</p>
+    <div class="border"></div>
+    <script>onStart();</script>
+    <center>
+        <div style="width:900px;">
+            <h4 id="a1">Zu wenige Leistungsfächer gewählt. (0/3)</h4>
+            <h4 id="a2">Mathematik und Deutsch müssen gewählt werden</h4>
+            <h4 id="a3">0 Sprache(n) und 0 Naturwissenschaft(en) gewählt. (2 Spachen & 1 Nws oder umgekehrt)</h4>
+            <h4 id="a4">Leistungsfachkombination ungültig: zwei der drei Leistungsfächer müssen aus D, M, FS, Nws sein.</h4>
+            <h4 id="a6">Folgende Fächer fehlen noch: Geschichte, Geographie und Gemeinschaftskunde, Religion oder Ethik, Bildende Kunst oder Musik, Sport</h4>
+            <h4 id="a7">Anzahl der gewählten Kurse müssen 42 ergeben. (0)</h4>
+            <h4 id="a10" style="display: none;">Bitte wähle die Fächer für das mündliche Abitur.</h4>
+            <h4 id="a11" style="display: none;">Du musst mindestens eine Gesellschaftswissenschaft im Abitur machen.</h4>
+            <h4 id="a_error"></h4>
+            <h4 id="a9" style="color:rgb(253, 255, 105);"></h4>
+        </div>
+    </center>
+
+
+    <h4 id="a12" style="color: yellow; margin-top: 70px; width:800px;"></h4>
+    <h1 id="a8" class="alert" style="margin-top: -20px; ">Kurswahl ungültig</h1>
+
+    <button class="btn" onclick="reset();">Reset</button>
+    <button class="btn" onclick="drucken();" id="button_print">Print</button>
+
+
+    <footer>
+        <center>
+            <table style="align-content:center;">
+                <tr>
+                    <td>
+                        <a href="/impressum.html" style="color:white; font-weight: normal;">Impressum</a>
+                    </td>
+
+                    <td>
+                        <center>
+                            <p id="date" style="font-weight: normal;"></p>
+                        </center>
+
+                        <script type="text/javascript">
+                            myFunction();
+
+                            function myFunction() {
+                                var d = new Date();
+                                var n = d.getFullYear();
+                                n = n + " © Jonas Haug";
+                                document.getElementById("date").innerHTML = n;
+                            }
+                            function openNav() {
+                                document.getElementById("myNav").style.width = "100%";
+                            }
+
+                            function closeNav() {
+                                document.getElementById("myNav").style.width = "0%";
+                            }
+                            if (Lesen("faecher") != "") {
+                                openNav();
+                                console.log("YES");
+                            }
+                        </script>
+
+                    </td>
+                    <td>
+                        <a href="datenschutz.html" style="color:white; font-weight: normal;">Datenschutz</a>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            </table>
+        </center>
+
+
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+﻿buttons:
+de1 button links
+de2 button rechts
+de3 spezialfall
+de4 button mündlich abitur
+de7 objekt abitur
+de8 objekt 5
+de9 objekt 3
+de stundenanzeige
+
+
+Listen:
+- Main
+- 
+
+
+
+spez_fach
+0 keins
+1 gg
+2 gm
+3 wi
+
+background:
+de1 5std
+de2 3std
+de3 2|2|2|2
+de4 2|2|0|0
+de5 3|3|0|0
+
+
+mündlich var:
+0 kein mdl
+1 gws
+2 all
