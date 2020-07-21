@@ -1,6 +1,6 @@
 # Kurswahl
 
-Vektorgrafik is simple Javascript project. The webiste is used to
+Kurswahl is simple Javascript project. The webiste is used to
 check the "Kurswahl" for the "Oberstufe" in german high school.
 
 
